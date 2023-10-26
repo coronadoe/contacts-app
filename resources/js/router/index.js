@@ -5,12 +5,12 @@ import HomeComponent from '../components/HomeComponent.vue'
 const routes = [
     {
         path: '/',
-        name: 'home',
+        name: 'Home',
         component: HomeComponent
     },
     {
         path: '/contacts',
-        name: 'contacts',
+        name: 'Contacts',
         component: Contacts
     },
 
