@@ -2,8 +2,10 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 
 class ContactUpdateRequest extends FormRequest
 {
@@ -23,12 +25,35 @@ class ContactUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'firstname' => [
+                'required',
+                'string',
+                'min:2',
+                'max:255',
+            ],
+            'lastname' => [
+                'required',
+                'string',
+                'min:2',
+                'max:255',
+            ],
             'email' => [
                 'required',
                 'email',
                 Rule::unique('contacts', 'email')->ignore($this->query->get('id')),
             ]
         ];
+    }
+
+    public function failedValidation(Validator $validator) {
+
+        $response = response()->json([
+            'success' => false,
+            'message' => 'Ops! Some errors occurred',
+            'errors' => $validator->errors()
+         ]);
+
+        throw new ValidationException($validator, $response);
     }
 
 }
