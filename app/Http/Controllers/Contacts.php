@@ -7,6 +7,7 @@ use App\Http\Requests\ContactUpdateRequest;
 
 use App\Jobs\Contact\AddContact;
 use App\Jobs\Contact\UpdateContact;
+use App\Jobs\Contact\DeleteContact;
 use App\Models\Contact;
 
 use Illuminate\Http\Request;
@@ -57,6 +58,24 @@ class Contacts extends Controller
 
         return response()->json($result);
 
+    }
+
+    public function destroy(int $id) {
+        $contact = Contact::find($id);
+
+        $result = [
+            'success' => false,
+            'message' => 'Unable to reove the contact from the system'
+        ];
+
+        if (null != $contact) {
+            dispatch(new DeleteContact($contact));
+
+            $result['success'] = true;
+            $result['message'] = 'The contact has been removed from the system.';
+        }
+
+        return response()->json($result);
     }
 
 }
