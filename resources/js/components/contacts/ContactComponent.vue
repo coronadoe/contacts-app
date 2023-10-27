@@ -5,11 +5,12 @@
 </template>
 
 <script>
-    export default {
-        mounted() {
-            console.log('mounted');
-        }
-    }
+
+    import { defineComponent } from "vue";
+
+    export default defineComponent({
+        name: 'ContactComponent'
+    });
 </script>
 
 <style></style>

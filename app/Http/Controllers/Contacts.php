@@ -65,7 +65,7 @@ class Contacts extends Controller
 
         $result = [
             'success' => false,
-            'message' => 'Unable to reove the contact from the system'
+            'message' => 'Unable to remove the contact from the system'
         ];
 
         if (null != $contact) {
