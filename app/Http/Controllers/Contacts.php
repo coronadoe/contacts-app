@@ -10,14 +10,14 @@ use Illuminate\Http\Request;
 
 class Contacts extends Controller
 {
-    public function index() {
+    public function index(): string {
 
         $contacts = Contact::all();
 
         return response()->json(['contacts' => $contacts]);
     }
 
-    public function store(ContactRequest $contactRequest) {
+    public function store(ContactRequest $contactRequest): string {
 
         $result = [
             'success' => false,
@@ -32,6 +32,13 @@ class Contacts extends Controller
 
         return response()->json($result);
 
+    }
+
+    public function show(int $contactId): string {
+
+        $contact = Contact::find($contactId);
+
+        return response()->json($contact);
     }
 
 }
