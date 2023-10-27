@@ -6,6 +6,7 @@ use App\Http\Requests\ContactRequest;
 use App\Http\Requests\ContactUpdateRequest;
 
 use App\Jobs\Contact\AddContact;
+use App\Jobs\Contact\UpdateContact;
 use App\Models\Contact;
 
 use Illuminate\Http\Request;
@@ -49,8 +50,9 @@ class Contacts extends Controller
         ];
 
         if ($contactUpdateRequest->validated()) {
-           $result['success'] = true;
-           $result['message'] = 'The contact has been updated.';
+            dispatch( new UpdateContact($contactUpdateRequest->all()) );
+            $result['success'] = true;
+            $result['message'] = 'The contact has been updated.';
         }
 
         return response()->json($result);
