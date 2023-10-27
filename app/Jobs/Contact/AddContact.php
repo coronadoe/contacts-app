@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Jobs\Contact;
 
 use App\Models\Contact;
 use Illuminate\Bus\Queueable;
