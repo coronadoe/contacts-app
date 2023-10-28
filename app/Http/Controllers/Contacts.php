@@ -14,11 +14,11 @@ use Illuminate\Http\Request;
 
 class Contacts extends Controller
 {
-    public function index(): string {
+    public function index() {
 
         $contacts = Contact::all();
 
-        return response()->json(['contacts' => $contacts]);
+        return response()->json(['contacts' => $contacts])->getData();
     }
 
     public function store(ContactRequest $contactRequest): string {
@@ -36,14 +36,14 @@ class Contacts extends Controller
         return response()->json($result);
     }
 
-    public function show(int $contactId): string {
+    public function show(int $contactId) {
 
         $contact = Contact::find($contactId);
 
-        return response()->json($contact);
+        return response()->json(['contact' => $contact])->getData();
     }
 
-    public function update(ContactUpdateRequest $contactUpdateRequest) {
+    public function update(ContactUpdateRequest $contactUpdateRequest): array {
 
         $result = [
             'success' => false,

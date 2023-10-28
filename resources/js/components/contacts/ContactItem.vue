@@ -1,5 +1,8 @@
 <template>
-    <div></div>    
+    <div>
+        This will display the contact item
+
+    </div>
 </template>
 
 <script>
