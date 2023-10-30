@@ -2,7 +2,9 @@
     <div class="contacts-container">
         This will show the contacts container
 
-        <contact-item />
+        <div :key="contact.id" v-for="contact in contacts"  >
+            <contact-item :contact="contact" />
+        </div>
     </div>
 </template>
 
