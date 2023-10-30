@@ -40,4 +40,9 @@
         width: auto;
         border-radius: 5px;
     }
+
+    .contact:hover {
+        border-color: #000;
+    }
+
 </style>

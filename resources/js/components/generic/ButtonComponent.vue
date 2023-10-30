@@ -22,13 +22,12 @@
             },
         },
 
-        mounted() {
-            console.log(this);
-        }
-
     });
 
 </script>
 
 <style scoped>
+    .btn {
+        cursor: pointer;
+    }
 </style>

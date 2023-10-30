@@ -2,7 +2,7 @@
     <div class="contacts-container">
         This will show the contacts container
 
-        <div :key="contact.id" v-for="contact in contacts"  >
+        <div :key="contact.id" v-for="contact in store.contacts"  >
             <contact-item :contact="contact" />
         </div>
     </div>
@@ -19,27 +19,21 @@
         components: {
             ContactItem
         },
-
-        data() {
-            return {
-                contacts: []
-            }
-        },
-
-        methods: {
-            async fetchContacts() {
-                const res = await fetch('api/contacts');
-                const data = await res.json();
-
-                return data.contacts;
-            }
-        },
-
-        async created() {
-            this.contacts = await this.fetchContacts();
-        }
-
     });
 </script>
+
+<script setup>
+    import { onMounted } from "vue";
+    import { contactsStore } from "@/stores/ContactsStores";
+
+    const store = contactsStore();
+
+    onMounted(async () => {
+        await store.fetchContacts();
+    });
+
+
+</script>
+
 
 <style></style>
