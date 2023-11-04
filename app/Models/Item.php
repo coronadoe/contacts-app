@@ -16,6 +16,4 @@ class Item extends Model
         'price',
         'type_id',
     ];
-
-
 }

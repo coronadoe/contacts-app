@@ -8,7 +8,7 @@
         <title>Contacts</title>
     </head>
     <body>
-        <div id="app">
+        <div id="app" class="h-screen bg-slate-900 text-white">
             <main-component />
         </div>
     </body>
