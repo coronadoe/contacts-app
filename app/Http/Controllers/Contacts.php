@@ -21,7 +21,7 @@ class Contacts extends Controller
         return response()->json(['contacts' => $contacts])->getData();
     }
 
-    public function store(ContactRequest $contactRequest): string {
+    public function store(ContactRequest $contactRequest) {
         $result = [
             'success' => false,
             'message' => 'Unable to add contact in the system.'
@@ -33,7 +33,7 @@ class Contacts extends Controller
             $result['message'] = 'Contact added in the system.';
         }
 
-        return response()->json($result);
+        return response()->json($result)->getData();
     }
 
     public function show(int $contactId) {
@@ -43,7 +43,7 @@ class Contacts extends Controller
         return response()->json(['contact' => $contact])->getData();
     }
 
-    public function update(ContactUpdateRequest $contactUpdateRequest): array {
+    public function update(ContactUpdateRequest $contactUpdateRequest) {
 
         $result = [
             'success' => false,
@@ -56,7 +56,7 @@ class Contacts extends Controller
             $result['message'] = 'The contact has been updated.';
         }
 
-        return response()->json($result);
+        return response()->json($result)->getData();
 
     }
 

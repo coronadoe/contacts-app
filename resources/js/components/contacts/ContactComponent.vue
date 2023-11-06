@@ -20,7 +20,7 @@
                     <input type="email" v-model="email" name="email" placeholder="Add email" required />
                 </div>
 
-                <input type="submit" value="Save item" />
+                <input type="submit" value="Save Contact" />
             </form>
         </div>
 
@@ -51,10 +51,26 @@
         },
 
         methods: {
-            onSubmit(event) {
+            async onSubmit(event) {
                 event.preventDefault();
 
-                console.log(this);
+                const newContact = {
+                    firstname: this.firstname,
+                    lastname: this.lastname,
+                    email: this.email
+                };
+
+                const res = await fetch("api/contacts/store/", {
+                    method: 'POST',
+                    headers: {
+                        'Content-type': 'application/json',
+                    },
+                    body: JSON.stringify(newContact)
+                });
+
+                const data = await res.json();
+
+                console.log(data);
             }
         }
 
