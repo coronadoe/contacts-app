@@ -6,7 +6,7 @@
         <div> <span>Last Name:</span> {{ contact.lastname }}</div>
         <div> <span>Email:</span> {{ contact.email }}</div>
 
-        <button-component :text="btnRemove" />
+        <button-component :text="btnRemove" @click="onDelete(contact.id)" />
     </div>
 </template>
 
@@ -27,6 +27,19 @@
 
         components: {
             ButtonComponent
+        },
+
+        methods: {
+            async onDelete(id) {
+
+                const res = await fetch(`api/contacts/delete/${id}`, {
+                    method: 'DELETE'
+                });
+
+                const data = await res.json();
+
+                console.log(data);
+            }
         }
     });
 
