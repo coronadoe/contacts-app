@@ -1,26 +1,29 @@
 <template>
     <div class="contacts-container">
-        This will show the contacts container
-
         <div>
+            This will show the contacts container
+        </div>
+
+        <button @click="toggleFormDisplay">Show</button>
+        <div v-show="toggleForm" class="flex flex-row">
+
             <form @submit="onSubmit">
-
-                <div>
-                    <label>First Name</label>
-                    <input type="text" v-model="firstname" name="firstname" placeholder="Add first name" required />
+                <div class="flex m-3">
+                    <label class="flex-auto w-32">First Name</label>
+                    <input class="flex-auto w-64" type="text" v-model="firstname" name="firstname" placeholder="Add first name" required />
                 </div>
 
-                <div>
-                    <label>Last Name</label>
-                    <input type="text" v-model="lastname" name="lastname" placeholder="Add last name" required />
+                <div class="flex m-3">
+                    <label class="flex-auto w-32">Last Name</label>
+                    <input class="flex-auto w-64" type="text" v-model="lastname" name="lastname" placeholder="Add last name" required />
                 </div>
 
-                <div>
-                    <label>Email</label>
-                    <input type="email" v-model="email" name="email" placeholder="Add email" required />
+                <div class="flex m-3">
+                    <label class="flex-auto w-32">Email</label>
+                    <input class="flex-auto w-64" type="email" v-model="email" name="email" placeholder="Add email" required />
                 </div>
 
-                <input type="submit" value="Save Contact" />
+                <input type="submit" value="Save Contact" class="cursor-pointer" />
             </form>
         </div>
 
@@ -49,7 +52,8 @@
             return {
                 firstname: '',
                 lastname: '',
-                email: ''
+                email: '',
+                toggleForm: false,
             }
         },
 
@@ -72,11 +76,17 @@
                 });
 
                 const data = await res.json();
-
                 console.log(data);
+
+                this.firstname = '';
+                this.lastname = '';
+                this.email = '';
+            },
+
+            toggleFormDisplay() {
+                this.toggleForm = !this.toggleForm;
             }
         }
-
     });
 </script>
 
@@ -90,8 +100,6 @@
         await store.fetchContacts();
     });
 
-
 </script>
-
 
 <style></style>
