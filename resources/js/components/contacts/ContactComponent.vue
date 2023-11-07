@@ -24,9 +24,12 @@
             </form>
         </div>
 
-        <div :key="contact.id" v-for="contact in store.contacts" class="columns-1" >
-            <contact-item :contact="contact" />
+        <div class="overflow-auto max-h-96">
+            <div :key="contact.id" v-for="contact in store.contacts">
+                <contact-item :contact="contact" />
+            </div>
         </div>
+
     </div>
 </template>
 
