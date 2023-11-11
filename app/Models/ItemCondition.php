@@ -5,17 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Item extends Model
+class ItemCondition extends Model
 {
     use HasFactory;
 
-    protected $table = 'items';
+    protected $table = 'item_conditions';
 
     protected $fillable = [
-        'name',
-        'price',
-        'type_id',
-        'condition_id',
-        'category_id'
+        'condition'
     ];
 }
