@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable(false);
             $table->float('price');
+            $table->unsignedBigInteger('item_type_id')->nullable(false);
+            $table->unsignedBigInteger('category_id')->nullable(false);
+            $table->unsignedBigInteger('item_condition_id')->nullable(false);
             $table->timestamps();
 
             $table->foreign('item_type_id')->references('id')->on('item_types')->onDelete('cascade');
